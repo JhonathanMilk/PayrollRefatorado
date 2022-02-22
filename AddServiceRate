@@ -1,0 +1,16 @@
+package UltimoUpdate;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+/**
+ *
+ * @author jhonathanmilk
+ */
+public class AddServiceRate implements Command{
+    public void execute(ArrayList<PaymentSchedule> schedule) {
+
+        Syndicate syndicate = new Syndicate();
+        syndicate.insertServiceRate(schedule, syndicate.scanIdSyndicate());
+    }
+}
