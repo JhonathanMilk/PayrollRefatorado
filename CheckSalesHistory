@@ -1,0 +1,28 @@
+package UltimoUpdate;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+/**
+ *
+ * @author jhonathanmilk
+ */
+public class CheckSalesHistory implements Command{
+        public void execute(ArrayList<PaymentSchedule> schedule) {
+            Scanner scan = new Scanner(System.in);
+
+        System.out.println("Digite o id do empregado: ");
+        int idEmployee = scan.nextInt();
+
+        for (PaymentSchedule perc : schedule) {
+            for (Employees empComissioned : perc.employees) {
+                if (empComissioned.getId() == idEmployee && empComissioned.getEmployeeType() == "Comissionado") {
+
+                    EmpCommissioned displaySales = (EmpCommissioned) empComissioned;
+                    displaySales.showSales();
+                    return;
+                }
+            }
+        }
+        System.out.println("ID não encontrado! O usuário precisa ser comissionado para registrar vendas");
+    }
+}
