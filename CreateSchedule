@@ -1,0 +1,25 @@
+package UltimoUpdate;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+/**
+ *
+ * @author jhonathanmilk
+ */
+public class CreateSchedule implements Command{
+        public void execute(ArrayList <PaymentSchedule> agenda){
+        Scanner scan = new Scanner(System.in);
+        
+        System.out.println("Por Favor, digite o nome para a agenda:");
+        String nameAgenda = scan.nextLine();
+        System.out.println("Digite alguma descrição para a agenda:");
+        String infoAgenda = scan.nextLine();
+        
+        ArrayList <Employees> empregado = new ArrayList();
+        PaymentSchedule agendanew = new PaymentSchedule(nameAgenda, infoAgenda);
+        agendanew.employees = empregado;
+        agenda.add(agendanew);
+        System.out.println("Agenda "+nameAgenda+" criada com sucesso!\n");
+    }
+}
