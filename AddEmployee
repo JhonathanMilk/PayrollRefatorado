@@ -1,0 +1,109 @@
+package UltimoUpdate;
+
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+/**
+ *
+ * @author jhonathanmilk
+ */
+public class AddEmployee implements Command {
+        Scanner scan = new Scanner(System.in);
+        
+        DateEmployeesTemp dateEmployees = new DateEmployeesTemp();
+        
+        public void execute(ArrayList<PaymentSchedule> schedule) {
+
+        System.out.println("Nome empregado:");
+        dateEmployees.setName(scan.nextLine());
+        System.out.println("endereco empregado:");
+        dateEmployees.setAdress(scan.nextLine());
+        System.out.println("data de nascimento:");
+        dateEmployees.setBirthDate(scan.nextLine());
+        System.out.println("Digite o tipo de empregado: "
+                + "\n1 - Assalariado"
+                + "\n2 - Horista");
+        int employeeType = scan.nextInt();
+        
+        Main.clearBuffer(scan);
+
+        System.out.println("O empregado pertence ao sindicato? (Y / N)");
+        String valueSindicato = scan.nextLine();
+
+        System.out.println("Qual o tipo de pagamento do empregado?\n"
+                + "\n1 - Cheque Correios"
+                + "\n2 - Cheque em mãos"
+                + "\n3 - Depósito bancario\n");
+        int paymentOption = scan.nextInt();
+        Main.clearBuffer(scan);
+
+        PaymentMethod paymentMethod = null;
+        BankAccountDeposit account = new BankAccountDeposit();
+
+        switch (paymentOption) {
+            case 1:
+                paymentMethod = new PaymentMethod("Cheque Correios");
+                break;
+            case 2:
+                paymentMethod = new PaymentMethod("Cheque em mãos");
+                break;
+            case 3:
+                paymentMethod = new PaymentMethod("Depósito Bancário", account);
+                account.addBankAccountDate();
+                break;
+            default:
+                System.out.println("opção inválida");
+                return;
+        }
+        
+        dateEmployees.setPaymentMethod(paymentMethod);
+        dateEmployees.setId(GenerateId.getNextId());
+        
+        boolean syndicateValidation;
+
+        syndicateValidation = (valueSindicato.equalsIgnoreCase("Y"));
+        dateEmployees.setValueSyndicato(syndicateValidation);
+        
+        Employees employee;
+        switch(employeeType) {
+            
+            case 1: {
+                System.out.println("O empregado é comissionado? Pressione Y para sim / N para não");
+                String comissioned = scan.nextLine();
+                
+                if (comissioned.equalsIgnoreCase("Y")) {
+                    dateEmployees.setEmployeeType("Comissionado");
+                    dateEmployees.setSalary(2000);
+                    employee = new EmpCommissioned(dateEmployees);
+                    schedule.get(1).employees.add(employee); break;                     
+                }
+                else if(comissioned.equalsIgnoreCase("N")){
+                    dateEmployees.setEmployeeType("Assalariado");
+                    dateEmployees.setSalary(2000);
+                    employee = new EmpSalaried(dateEmployees);
+                    schedule.get(0).employees.add(employee); break;                   
+                }
+                else {
+                System.out.println("Opção inválida");
+                }
+                
+            }
+            case 2: {
+                dateEmployees.setEmployeeType("Horista");
+               employee = new EmpHourly(dateEmployees);
+                schedule.get(2).employees.add(employee);break;
+            } 
+            default: {
+                System.out.println("Tipo de empregado inválido");
+                return;
+            }
+        }
+        
+        if (syndicateValidation) {
+            employee.setRateSyndicate();
+        }
+        
+        System.out.println("Empregado adicionado com sucesso.\n");
+    }
+}
