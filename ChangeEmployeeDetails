@@ -1,0 +1,75 @@
+package UltimoUpdate;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+/**
+ *
+ * @author jhonathanmilk
+ */
+public class ChangeEmployeeDetails  implements Command{
+     public void execute(ArrayList<PaymentSchedule> schedule) {
+         Scanner scan = new Scanner(System.in);
+
+        if (PaymentSchedule.isEmpty(schedule)) {
+            System.out.println("Agendas vazias! Por favor insira empregados em alguma agenda de pagamento\n");
+            return;
+        }
+
+        System.out.println("Digite o id do empregado");
+        int idEmployee = scan.nextInt();
+        Main.clearBuffer(scan);
+        int i =0;
+
+        for (PaymentSchedule perc : schedule) {
+            for (Employees changeDetails : perc.employees) {
+                if (changeDetails.getId() == idEmployee) {
+
+                    System.out.println("Quais dados deseja mudar?\n\n"
+                            + "1 - Nome\n"
+                            + "2 - Endereço\n"
+                            + "3 - Tipo de empregado\n"
+                            + "4 - Método de pagamento\n"
+                            + "5 - Dados sindicato\n"
+                            + "6 - Agenda de pagamento\n"
+                            + "7 - Retornar sem alterações\n");
+                    int change = scan.nextInt();
+                    Main.clearBuffer(scan);
+                    ChangeRegistration changeRegistration = new ChangeRegistration();
+
+                    switch (change) {
+                        case 1:
+                            changeRegistration.changeName(changeDetails);
+                            break;
+                        case 2:
+                            changeRegistration.changeAdress(changeDetails);
+                            break;
+                        case 3:
+                            changeRegistration.changeTypeEmployee(changeDetails, schedule);
+                            break;
+                        case 4:
+                            changeRegistration.changePaymentMethod(changeDetails);
+                            break;
+                        case 5:
+                            changeRegistration.changeSyndicateData(changeDetails);
+                            break;
+                        case 6:
+                            changeRegistration.changePaymentSchedule(schedule, i, changeDetails);
+                            break;
+                        case 7:
+                            return;
+                        default:
+                            System.out.println("Opção inválida\n");
+                            break;
+                    }
+
+                    //   changeDetails.alterarCadastro(agenda, change);
+                    //    perc.empregados.remove(changeDetails);
+                    return;
+                }
+            }
+            i++;
+        }
+        System.out.println("ID não encontrado");
+    }
+}
