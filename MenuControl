@@ -1,0 +1,17 @@
+package UltimoUpdate;
+
+import java.util.ArrayList;
+/**
+ *
+ * @author jhonathanmilk
+ */
+public class MenuControl {
+    Command slot;
+    
+    public void setCommand(Command command){
+        slot = command;
+    }
+    public void commandSelected(ArrayList<PaymentSchedule> schedule){
+      slot.execute(schedule);  
+    }
+}
