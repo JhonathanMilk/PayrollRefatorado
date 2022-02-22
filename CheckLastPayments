@@ -1,0 +1,26 @@
+package UltimoUpdate;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+/**
+ *
+ * @author jhonathanmilk
+ */
+public class CheckLastPayments implements Command {
+        public void execute(ArrayList <PaymentSchedule> schedule){
+            Scanner scan = new Scanner(System.in);
+        System.out.println("Digite o id do empregado:");
+        int idEmployee = scan.nextInt();
+        Main.clearBuffer(scan);
+        
+        for (PaymentSchedule perc : schedule) {
+            for (Employees checkEmployee : perc.employees){
+                if(checkEmployee.getId() == idEmployee){
+                    System.out.println(checkEmployee.getLastPayments());
+                    return;
+                }
+            }
+        }
+        System.out.println("Empregado não encontrado");
+    }
+}
