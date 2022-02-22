@@ -1,0 +1,162 @@
+package UltimoUpdate;
+
+import java.util.LinkedList;
+
+/**
+ *
+ * @author jhonathanmilk
+ */
+public class DateEmployeesTemp {
+    private String name;
+    private String adress;
+    private String birthDate;
+    private int id;
+    private String employeeType;
+    private double salary;
+    private boolean valueSyndicato;
+    private Syndicate syndicate;
+    private PaymentMethod paymentMethod;
+    private LinkedList<String> lastPayments = new LinkedList<>();
+    private double workedHours;
+    private double extraHours;
+    private boolean commissioned = false;
+    private String historicCommission = "";
+    private double commission;
+    
+    public DateEmployeesTemp copyDateEmployees(Employees employee){
+        this.name = employee.getName();
+        this.adress = employee.getAdress();
+        this.birthDate = employee.getBirthDate();
+        this.employeeType = employee.getEmployeeType();
+        this.id = employee.getId();
+        this.valueSyndicato = employee.isValueSyndicato();
+        this.paymentMethod = employee.getPaymentMethod();
+        
+        return this;
+    }
+    
+
+    public String getHistoricCommission() {
+        return historicCommission;
+    }
+
+    public void setHistoricCommission(String historicCommission) {
+        this.historicCommission = historicCommission;
+    }
+
+    public double getCommission() {
+        return commission;
+    }
+
+    public void setCommission(double commission) {
+        this.commission = commission;
+    }
+    
+    
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAdress() {
+        return adress;
+    }
+
+    public void setAdress(String adress) {
+        this.adress = adress;
+    }
+
+    public String getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getEmployeeType() {
+        return employeeType;
+    }
+
+    public void setEmployeeType(String employeeType) {
+        this.employeeType = employeeType;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+    public boolean isValueSyndicato() {
+        return valueSyndicato;
+    }
+
+    public void setValueSyndicato(boolean valueSyndicato) {
+        this.valueSyndicato = valueSyndicato;
+    }
+
+    public Syndicate getSyndicate() {
+        return syndicate;
+    }
+
+    public void setSyndicate(Syndicate syndicate) {
+        this.syndicate = syndicate;
+    }
+
+    public PaymentMethod getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(PaymentMethod paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
+    public LinkedList<String> getLastPayments() {
+        return lastPayments;
+    }
+
+    public void setLastPayments(LinkedList<String> lastPayments) {
+        this.lastPayments = lastPayments;
+    }
+
+    public double getWorkedHours() {
+        return workedHours;
+    }
+
+    public void setWorkedHours(double workedHours) {
+        this.workedHours = workedHours;
+    }
+
+    public double getExtraHours() {
+        return extraHours;
+    }
+
+    public void setExtraHours(double extraHours) {
+        this.extraHours = extraHours;
+    }
+
+    public boolean isCommissioned() {
+        return commissioned;
+    }
+
+    public void setCommissioned(boolean commissioned) {
+        this.commissioned = commissioned;
+    }
+    
+    
+    
+}
