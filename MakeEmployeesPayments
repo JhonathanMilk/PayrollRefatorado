@@ -1,0 +1,28 @@
+package UltimoUpdate;
+import java.util.ArrayList;
+import java.util.Scanner;
+/**
+ *
+ * @author jhonathanmilk
+ */
+public class MakeEmployeesPayments implements Command {
+        public void execute(ArrayList<PaymentSchedule> schedule) {
+            Scanner scan = new Scanner(System.in);
+        PrintSchedules print = new PrintSchedules();
+        System.out.println("Escolha a agenda para realizar os pagamentos\n");
+        print.execute(schedule);
+  //      PaymentSchedule.printAgenda(schedule);
+        int option = scan.nextInt();
+        Main.clearBuffer(scan);
+
+        if (schedule.size() >= option && schedule.size() > 0) {
+            if (PaymentSchedule.isEmpty(schedule.get(option - 1))) {
+                System.out.println("Agenda vazia! Por favor insira empregados na agenda.\n");
+                return;
+            }
+            PaymentMethod.makePayments(schedule.get(option - 1));
+        } else {
+            System.out.println("Você digitou uma opção inválida!\n");
+        }
+    }
+}
