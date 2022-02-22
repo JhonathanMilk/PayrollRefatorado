@@ -1,0 +1,17 @@
+package UltimoUpdate;
+
+/**
+ *
+ * @author jhonathanmilk
+ */
+public class GenerateId {
+    private static int id = 1;
+    private static int idSyndicate = 21130;
+    
+    public static int getNextId(){
+        return id++;
+    }
+    public static int getNextIdSyndicate(){
+        return idSyndicate++;
+    }
+}
