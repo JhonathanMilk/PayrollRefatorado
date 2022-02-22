@@ -1,0 +1,42 @@
+package UltimoUpdate;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+/**
+ *
+ * @author jhonathanmilk
+ */
+public class AddSale implements Command{
+        public void execute(ArrayList<PaymentSchedule> schedule) {
+            
+            Scanner scan = new Scanner(System.in);
+            
+        System.out.println("Digite o id do vendedor:");
+        int idCommissioned = scan.nextInt();
+        Main.clearBuffer(scan);
+
+        for (PaymentSchedule perc : schedule) {
+            for (Employees empComissioned : perc.employees) {
+                if (empComissioned.getId() == idCommissioned && empComissioned.getEmployeeType() == "Comissionado") {
+
+                    System.out.println("Digite o valor da venda:");
+                    Double valueVenda = scan.nextDouble();
+                    clearBuffer(scan);
+                    System.out.println("Digite a data da venda:");
+                    String dateVenda = scan.nextLine();
+
+                    EmpCommissioned insertCommission = (EmpCommissioned) empComissioned;
+                    insertCommission.addCommission(valueVenda, dateVenda, idCommissioned);
+                    return;
+                }
+            }
+        }
+        System.out.println("ID não encontrado ou empregado não é comissionado");
+    }
+    private static void clearBuffer(Scanner scan) {
+        if (scan.hasNextLine()) {
+            scan.nextLine();
+        }
+    }
+}
