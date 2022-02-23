@@ -1,4 +1,4 @@
-# Agenda de Pagamentos Refatorado
+# Folha de Pagamentos - Projeto Refatorado
 
 Implementado o padrão **command** na classe principal *Main*, sendo adicionado as classes [Command](https://github.com/JhonathanMilk/PayrollRefatorado/blob/main/Command) e [MenuControl](https://github.com/JhonathanMilk/PayrollRefatorado/blob/main/MenuControl). além de várias tranformações de metódos em classes.
 
@@ -6,7 +6,7 @@ Implementado o padrão **command** na classe principal *Main*, sendo adicionado 
 
 >[Main Refatorada](https://github.com/JhonathanMilk/PayrollRefatorado/blob/main/Main)
 
-Após a implementação do Command e separação de métodos em classes, ficou evidente outro smell. Então foi alterado duplicação de código, implementando o **Extract Method** em [RemoveEmployee](https://github.com/JhonathanMilk/PayrollRefatorado/blob/main/RemoveEmployee) e [PrintEmployee](https://github.com/JhonathanMilk/PayrollRefatorado/blob/main/RemoveEmployee), sendo implementado apenas um único método *testIsEmpty* na classe [PaymentSchedule](https://github.com/JhonathanMilk/PayrollRefatorado/blob/main/PaymentSchedule)
+Após a implementação do Command e separação de métodos em classes, ficou evidente outro smell. Então foi alterado duplicação de código, implementando o **Extract Method** em [RemoveEmployee](https://github.com/JhonathanMilk/PayrollRefatorado/blob/main/RemoveEmployee) e [PrintEmployee](https://github.com/JhonathanMilk/PayrollRefatorado/blob/main/RemoveEmployee), sendo implementado apenas um único método *testIsEmpty* na classe [PaymentSchedule](https://github.com/JhonathanMilk/PayrollRefatorado/blob/main/PaymentSchedule). *testIsEmpty* é invocado por ambos métodos para testar se a Agenda de empregados está vazia.
 
 Aplicado também **Extract Method** nos métodos *AddServiceRate* e *showServiceRate* pertencentes a classe [ProgramControl](https://github.com/JhonathanMilk/Payroll/blob/main/ProgramControl). Importante ressaltar que essa clase não existe mais no projeto refatorado. o código duplicado dessas classes foi movido para  classe [Syndicate](https://github.com/JhonathanMilk/PayrollRefatorado/blob/main/Syndicate), método *scanIdSyndicate*.
 
