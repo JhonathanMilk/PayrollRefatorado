@@ -1,0 +1,18 @@
+package UltimoUpdate;
+
+import java.util.ArrayList;
+
+/**
+ *
+ * @author jhonathanmilk
+ */
+public class PrintSchedules implements Command{
+        public void execute (ArrayList <PaymentSchedule> agenda){
+        int i = 0;
+        System.out.println("Agendas disponíveis:");
+        for(PaymentSchedule print : agenda){
+            i++;
+            System.out.println(i +" - " + print.getNome());
+        }
+    }
+}
