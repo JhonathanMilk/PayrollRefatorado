@@ -1,4 +1,4 @@
-# Folha de Pagamentos - Projeto Refatorado
+# Folha de Pagamento - Projeto Refatorado
 
 Implementado o padrão **command** na classe principal *Main*, sendo adicionado as classes [Command](https://github.com/JhonathanMilk/PayrollRefatorado/blob/main/Command) e [MenuControl](https://github.com/JhonathanMilk/PayrollRefatorado/blob/main/MenuControl). além de várias tranformações de metódos em classes.
 
