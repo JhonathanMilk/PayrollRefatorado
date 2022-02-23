@@ -1,0 +1,66 @@
+package UltimoUpdate;
+
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+/**
+ *
+ * @author jhonathanmilk
+ */
+public class PaymentSchedule {
+    private String nome;
+    private String info = "";
+    ArrayList<Employees> employees;
+
+    public PaymentSchedule() {
+    }
+    
+            
+    public PaymentSchedule(String nome, String Info) {
+        this.nome = nome;
+        this.info = info;
+    }
+    
+    public static boolean testIsEmpty (ArrayList <PaymentSchedule> agenda){
+                 if(isEmpty(agenda)){
+                    System.out.println("Lista de empregados vazia, por favor adicionar empregados!\n");
+                    return true;
+                } 
+                 return false;
+    }
+    
+    public static boolean isEmpty(ArrayList <PaymentSchedule> agenda){
+        for(PaymentSchedule perc : agenda){
+            if(!perc.employees.isEmpty()){
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    public static boolean isEmpty(PaymentSchedule agenda){
+            if(!agenda.employees.isEmpty()){
+                return false;
+            }
+        return true;
+    }
+    
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
+    }
+    
+    
+}
