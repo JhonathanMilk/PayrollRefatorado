@@ -1,0 +1,21 @@
+package UltimoUpdate;
+
+
+import java.util.ArrayList;
+
+/**
+ *
+ * @author jhonathanmilk
+ */
+public class ScrollThroughSchedule {
+    public Employees loop(ArrayList<PaymentSchedule> schedule, int idEmployee){
+        for (PaymentSchedule perc : schedule) {
+            for (Employees empComissioned : perc.employees) {
+                if (empComissioned.getId() == idEmployee && empComissioned.getEmployeeType() == "Comissionado") {
+                    return empComissioned;
+                }
+            }
+        }
+        return null;
+    }
+}
