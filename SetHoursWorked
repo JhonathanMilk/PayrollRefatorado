@@ -1,0 +1,39 @@
+package UltimoUpdate;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+/**
+ *
+ * @author jhonathanmilk
+ */
+public class SetHoursWorked implements Command{
+    
+        public void execute(ArrayList<PaymentSchedule> schedule) {
+            Scanner scan = new Scanner(System.in);
+
+        System.out.println("Por favor, digite seu ID");
+        int idHourly = scan.nextInt();
+
+        for (PaymentSchedule perc : schedule) {
+            for (Employees empHourly : perc.employees) {
+                if (empHourly.getId() == idHourly && empHourly.getEmployeeType() == "Horista") {
+
+                    System.out.println("Digite a quantidade de horas trabalhadas");
+                    double workedHours = scan.nextDouble();
+                    clearBuffer(scan);
+
+                    EmpHourly empHourly2 = (EmpHourly) empHourly;
+                    empHourly2.submitTimecard(workedHours, idHourly);
+                    return;
+                }
+            }
+        }
+
+        System.out.println("ID não encontrado ou empregado não é Horista");
+    }
+    private static void clearBuffer(Scanner scan) {
+        if (scan.hasNextLine()) {
+            scan.nextLine();
+        }
+    }
+}
