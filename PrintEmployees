@@ -1,0 +1,32 @@
+package UltimoUpdate;
+
+import java.util.ArrayList;
+
+/**
+ *
+ * @author jhonathanmilk
+ */
+public class PrintEmployees implements Command{
+    public void execute(ArrayList<PaymentSchedule> schedule){
+               
+        if(PaymentSchedule.testIsEmpty(schedule)) return;
+                
+                for(PaymentSchedule print : schedule){
+                    
+                    System.out.println("Agenda: "+print.getNome()+"\n");
+                    
+                    for(Employees printEmp : print.employees){
+                       
+                        System.out.println(printEmp);     
+                        
+                        if(printEmp.isValueSyndicato()){
+                            System.out.println("Empregado pertencente ao sindicato");
+                            System.out.println("ID identificação no sindicato: "+printEmp.getSyndicate().getEmployeeIdSyndicate()
+                                                          +"\nTaxa sindical: "+printEmp.getSyndicate().getMonthlyRate()+"%\n");
+                        }
+                    }
+                    System.out.println("_____________________________________________________________\n");
+                }                    
+    }
+      
+}
