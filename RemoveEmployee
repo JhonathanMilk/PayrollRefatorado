@@ -1,0 +1,28 @@
+package UltimoUpdate;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+/**
+ *
+ * @author jhonathanmilk
+ */
+public class RemoveEmployee implements Command{
+        public void execute(ArrayList<PaymentSchedule> schedule) {
+            Scanner scan = new Scanner(System.in);
+            
+        if(PaymentSchedule.testIsEmpty(schedule)) return;
+            
+            Employees cleaner = new Employees();
+            System.out.println("Digite o id do empregado que deseja remover:");
+            int clean = scan.nextInt();
+            boolean remove = false;
+
+            remove = cleaner.removerEmpregado(schedule, clean);
+
+            if (remove) {
+                System.out.println("Empregado removido");
+            } else {
+                System.out.println("Empregado não encontrado");
+            }
+        }
+}
